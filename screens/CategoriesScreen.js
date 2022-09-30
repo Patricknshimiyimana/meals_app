@@ -2,15 +2,17 @@ import { View, Text, StatusBar, StyleSheet, FlatList } from "react-native";
 import CategoryGridTile from "../components/CategoryGridTile";
 import { CATEGORIES } from "../data/dummy-data";
 
-const CategoriesScreen = () => {
+const CategoriesScreen = ({ navigation }) => {
   const renderCategoryItem = (itemData) => {
+    const handleClick = () => {
+      console.log(itemData.item.title)
+      navigation.navigate("MealsOverview");
+    };
     return (
       <CategoryGridTile
         title={itemData.item.title}
         color={itemData.item.color}
-        onPressCatItem={() => {
-          console.log('category item pressed!', itemData.item.title)
-        }}
+        onPressCatItem={handleClick}
       />
     );
   };
