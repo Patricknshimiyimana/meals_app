@@ -18,6 +18,7 @@ export default function MealDetailsScreen({ route }) {
         duration={selectedMeal.duration}
         complexity={selectedMeal.complexity}
         affordability={selectedMeal.affordability}
+        textStyle={styles.detailText}
       />
       <Text></Text>
       <View></View>
@@ -42,4 +43,7 @@ const styles = StyleSheet.create({
     margin: 8,
     color: 'white'
   },
+  detailText: {
+    color: 'white'
+  }
 });
