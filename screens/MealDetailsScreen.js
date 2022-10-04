@@ -1,4 +1,6 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import List from "../components/MealDetail/List";
+import Subtitle from "../components/MealDetail/Subtitle";
 import MealDetails from "../components/MealDetails";
 
 import { MEALS } from "../data/dummy-data";
@@ -11,23 +13,28 @@ export default function MealDetailsScreen({ route }) {
 
   console.log(route.params.mealId);
   return (
-    <View>
-      <Image source={{ uri: selectedMeal.imageUrl }} style={styles.image} />
-      <Text style={styles.title}>{selectedMeal.title}</Text>
-      <MealDetails
-        duration={selectedMeal.duration}
-        complexity={selectedMeal.complexity}
-        affordability={selectedMeal.affordability}
-        textStyle={styles.detailText}
-      />
-      <Text></Text>
-      <View></View>
-      <Text>Ingredients</Text>
-      {selectedMeal.ingredients.map((ingredient) => (
-        <Text key={ingredient}>{ingredient}</Text>
-      ))}
-      <Text>Steps</Text>
-    </View>
+    <ScrollView>
+      <View>
+        <Image source={{ uri: selectedMeal.imageUrl }} style={styles.image} />
+        <Text style={styles.title}>{selectedMeal.title}</Text>
+        <MealDetails
+          duration={selectedMeal.duration}
+          complexity={selectedMeal.complexity}
+          affordability={selectedMeal.affordability}
+          textStyle={styles.detailText}
+        />
+        <Text></Text>
+        <View></View>
+        <View style={{ alignItems: 'center' }}>
+          <View style={{ width: "80%" }}>
+            <Subtitle>Ingredients</Subtitle>
+            <List data={selectedMeal.ingredients} />
+            <Subtitle>Steps</Subtitle>
+            <List data={selectedMeal.steps} />
+          </View>
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
@@ -39,11 +46,11 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 24,
-    textAlign: 'center',
+    textAlign: "center",
     margin: 8,
-    color: 'white'
+    color: "white",
   },
   detailText: {
-    color: 'white'
-  }
+    color: "white",
+  },
 });
