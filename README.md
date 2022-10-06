@@ -8,6 +8,7 @@ Discover delicious new recipes and cuisines, food categories, meals, ingredients
 ## Getting Started
 Run the app on your system
 ### Available scripts
+- `npm install` downloads and install dependencies in the package.json file
 - ####  `npm start`  Runs the app in development mode.
 - Open it in the Expo Go app on phone or simulator to view it. 
 - It will reload if you save edits to your files, and you will see build errors and logs in the terminal.
